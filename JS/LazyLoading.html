@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="top-box"></div>
+  <div class="img-box">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-hHwvJrbTSXkHWpEPZh4-dt1dG6bRqtnZ7HKZvdDT5BgZ0IX1T5GiicZE6O27Qzi7xio&usqp=CAU" lazy-src="https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg" alt="">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-hHwvJrbTSXkHWpEPZh4-dt1dG6bRqtnZ7HKZvdDT5BgZ0IX1T5GiicZE6O27Qzi7xio&usqp=CAU" lazy-src="https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg" alt="">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-hHwvJrbTSXkHWpEPZh4-dt1dG6bRqtnZ7HKZvdDT5BgZ0IX1T5GiicZE6O27Qzi7xio&usqp=CAU" lazy-src="https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg" alt="">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-hHwvJrbTSXkHWpEPZh4-dt1dG6bRqtnZ7HKZvdDT5BgZ0IX1T5GiicZE6O27Qzi7xio&usqp=CAU" lazy-src="https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg" alt="">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-hHwvJrbTSXkHWpEPZh4-dt1dG6bRqtnZ7HKZvdDT5BgZ0IX1T5GiicZE6O27Qzi7xio&usqp=CAU" lazy-src="https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg" alt="">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-hHwvJrbTSXkHWpEPZh4-dt1dG6bRqtnZ7HKZvdDT5BgZ0IX1T5GiicZE6O27Qzi7xio&usqp=CAU" lazy-src="https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg" alt="">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-hHwvJrbTSXkHWpEPZh4-dt1dG6bRqtnZ7HKZvdDT5BgZ0IX1T5GiicZE6O27Qzi7xio&usqp=CAU" lazy-src="https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg" alt="">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-hHwvJrbTSXkHWpEPZh4-dt1dG6bRqtnZ7HKZvdDT5BgZ0IX1T5GiicZE6O27Qzi7xio&usqp=CAU" lazy-src="https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg" alt="">
+  </div>
+</body>
+</html>
+<script>
+  // docs: https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/unobserve
+  function loadImageLazySrc(img) {
+    const url = img.getAttribute("lazy-src");
+    img.setAttribute("src", url);
+    img.removeAttribute("lazy-src");
+  }
+  function readyLazyLoad() {
+    if ('IntersectionObserver' in window) {
+      var lazyImgs = document.querySelectorAll("[lazy-src]");
+
+      let observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          console.log(entry)
+          if (entry.isIntersecting) {
+            loadImageLazySrc(entry.target);
+            observer.unobserve(entry.target);
+          }
+        })
+      });
+
+      lazyImgs.forEach(img => {
+        observer.observe(img);
+      })
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    readyLazyLoad();
+  });
+</script>
+<style>
+  html, body {
+    width: 100%;
+  }
+  .top-box {
+    background-color: #fff;
+    height: 100vh;
+    width: 80vw;
+    margin: 50px auto;
+    border: 1px solid black;
+  }
+  .img-box {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  .img-box img {
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    width: calc(50% - 300px);  
+    height: 270px;
+  }
+</style>

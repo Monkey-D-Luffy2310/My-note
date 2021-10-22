@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="test.css" />
+  <script src="2.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <!-- Accordion -->
+  <details>
+    <summary>Open me to read more</summary>
+    <p>Lorem Ipsum is a text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+  </details>
+  
+  <input type="range" min="1" max="100" value="50">
+  <input type="date">
+  <input type="color">
+  <div id="edit" contenteditable>
+    Hey, I am a div element! Edit my text!
+  <br>
+  <picture>
+    <source media="(max-width: 400px)" srcset="https://picsum.photos/id/1049/400/240.jpg">
+    <source media="(max-width: 600px)" srcset="https://picsum.photos/id/1010/400/240.jpg">
+    <img src="https://picsum.photos/id/1083/400/240.jpg" alt="" />
+  </picture>
+  <br>
+
+  <!-- Progress Bar -->
+  <progress id="project" max="100" value="70"> 70% </progress>
+  <br>
+
+  <!-- Dropdown -->
+  <input list="list" placeholder="Select Your Option...">
+    <datalist id="list">
+      <option value="React">
+      <option value="Vue">
+      <option value="Svelte">
+    </datalist>
+  </input>
+
+  <!-- tooltip -->
+  <p title="Hello, I am a paragraph living inside a white container!">Hover over this text</p>
+</body>
+</html>
